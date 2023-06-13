@@ -1,6 +1,8 @@
 import math
 from Base62Switch import *
 
+# TODO Add negative number support, could be done by sensing sign, removing it, conversion, resigning
+
 power = 0
 
 def DigRequ(num):
