@@ -41,6 +41,7 @@ def To62(num):
 			else:
 				j += 1
 	print(f"{num} in duohexadecimal is {result}.")
+	return result
 
 def To10(num):
 	'''
@@ -48,7 +49,6 @@ def To10(num):
 	'''
 	result = 0
 	power = 0
-	num = str(num)
 	for i in range(len(num)):
 		i += 1
 		val = num[-i]
@@ -57,6 +57,19 @@ def To10(num):
 		power += 1
 	result = str(result)
 	print(f"{num} in denary is {result}.")
+	return result
 
 def Menu():
-	pass
+	running = True
+	while running:
+		print("Modes:\n1. From Base-10 to Base-62\n2. From Base-62 to Base-10\n0. Exit")
+		mode = int(input("Select a mode: "))
+		if mode == 0:
+			running = False
+		elif mode == 1:
+			value = input("Input a number: ")
+			result = To62(value)
+		elif mode == 2:
+			value = input("Input a number: ")
+			result = To10(value)
+	quit()
