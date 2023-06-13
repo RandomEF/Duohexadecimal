@@ -2,6 +2,7 @@ import math
 from Base62Switch import *
 
 # TODO Add negative number support, could be done by sensing sign, removing it, conversion, resigning
+# TODO Currently sees the remainder as negative and skips over the whole process
 
 power = 0
 
@@ -12,6 +13,7 @@ def DigRequ(num):
 	global power
 	power = 0
 	searching = True
+	num = int(num)
 	while searching:
 		if ((math.pow(62, power) - 1) >= num):
 			searching = False
@@ -42,7 +44,7 @@ def To62(num):
 				break
 			else:
 				j += 1
-	print(f"{num} in duohexadecimal is {result}.")
+	print(f"{num} in duohexadecimal is {result}.\n")
 	return result
 
 def To10(num):
@@ -58,7 +60,7 @@ def To10(num):
 		result += int(math.pow(62, power) * valConv)
 		power += 1
 	result = str(result)
-	print(f"{num} in denary is {result}.")
+	print(f"{num} in denary is {result}.\n")
 	return result
 
 def Menu():
