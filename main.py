@@ -1,8 +1,7 @@
 from DuoHexaDecimal import *
 
 def main():
-	num = "XXXX"
-	To10(num)
+	Menu()
 	
 
 if __name__ == "__main__":
