@@ -22,10 +22,21 @@ def DigRequ(num):
 		else:
 			power += 1
 
+def SignCheck(num):
+	global signed
+	signed = False
+	if num[0] == "-":
+		signed = True
+		global trueNum
+		trueNum = num
+		num = num[1:]
+	return num
+
 def To62(num):
 	'''
  	Converts a number to Base62
 	'''
+	num = int(SignCheck(num))
 	DigRequ(num)
 	result = ''
 	remainder = num
@@ -44,13 +55,17 @@ def To62(num):
 				break
 			else:
 				j += 1
-	print(f"{num} in duohexadecimal is {result}.\n")
+	if signed:
+		result = "-" + result
+	result = str(result)
+	print(f"{trueNum} in duohexadecimal is {result}.\n")
 	return result
 
 def To10(num):
 	'''
 	Converts a Base62 number to decimal
 	'''
+	num = SignCheck(num)
 	result = 0
 	power = 0
 	for i in range(len(num)):
@@ -59,8 +74,10 @@ def To10(num):
 		valConv = STo10(val)
 		result += int(math.pow(62, power) * valConv)
 		power += 1
+	if signed:
+		result = -result
 	result = str(result)
-	print(f"{num} in denary is {result}.\n")
+	print(f"{trueNum} in denary is {result}.\n")
 	return result
 
 def Menu():
